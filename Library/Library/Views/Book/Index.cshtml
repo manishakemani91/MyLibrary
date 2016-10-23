@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MyLibraryService.BookInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add Book", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Id")
+        </th>
+        <th>
+            @Html.DisplayName("Name")
+          
+            @*@Html.DisplayNameFor(model => model.Category_Id)*@
+        </th>
+       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+
+   
+}
+
+ 
+
+      
+    
+ 
+</table>
+
+<p>
+    @Html.ActionLink("Get Books by Categories", "Details", "Book")
+</p>
+

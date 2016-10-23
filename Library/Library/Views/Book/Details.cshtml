@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MyLibraryService.BookInfo>
+<script>
+
+    function SelectedIndexChanged(dropDownValue) {
+        window.location.href = '/Book/Details?id=' + dropDownValue;
+    }
+</script>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Books based on categories")
+        </th>
+        <th>
+            @Html.DropDownList("Category_Id", ViewBag.categorydd1 as SelectList, "select", new { onchange = "SelectedIndexChanged(this.value)" })
+
+
+        </th>
+
+    </tr>
+
+    <tr>
+        <th>
+            @Html.DisplayName("Id")
+        </th>
+        <th>
+            @Html.DisplayName("Name")
+
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+        </tr>
+    }
+
+
+</table>
+
+
+<p>
+    @Html.ActionLink("Back", "Index", "Book")
+</p>
